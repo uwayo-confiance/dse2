@@ -7,8 +7,8 @@ function analyseMarks(marks, passMark = 50) {
     let highest = marks[0];
     let lowest = marks[0];
     let passedCount = 0;
-    let failed = 0;
-    let even = 0;
+    let failedCount = 0;
+    let evenCount = 0;
 
     for (let i = 0; i < marks.length; i++) {
         const mark = marks[i];
@@ -30,6 +30,8 @@ function analyseMarks(marks, passMark = 50) {
 
     const average = Math.round((total / marks.length) * 10) / 10;
     const passRate = Math.round((passedCount / marks.length) * 1000) / 10;
+
+<<<<<<< HEAD
     const status = average >= passMark ? "Target met" : "Need support";
     let grade;
 
@@ -49,6 +51,23 @@ function analyseMarks(marks, passMark = 50) {
         default:
             grade = "D";
     }
+=======
+    const status = average >= passMark
+        ? "PASS"
+        : "FAIL";
+
+    let grade;
+
+    if (average >= 80) {
+        grade = "A";
+    } else if (average >= 70) {
+        grade = "B";
+    } else if (average >= 50) {
+        grade = "C";
+    } else {
+        grade = "F";
+    }
+>>>>>>> conflicting-branch
 
     return {
         total,
@@ -67,6 +86,7 @@ function analyseMarks(marks, passMark = 50) {
 
 const marks = [78, 45, 90, 65, 50, 0, 100, 33];
 const passMark = 101;
+
 const expected = {
     total: 461,
     average: 57.6,
@@ -80,10 +100,22 @@ const expected = {
     status: "Need support",
     grade: "C"
 };
+
 const actual = analyseMarks(marks, passMark);
 
 console.log("Expected result:", expected);
 console.log("Actual result:", actual);
-console.log("Results match:", JSON.stringify(actual) === JSON.stringify(expected));
-console.log("Invalid numerical-string mark returns null:", analyseMarks([78, "45"], passMark) === null);
-console.log("Invalid fractional passMark returns null:", analyseMarks(marks, 50.5) === null);
+console.log(
+    "Results match:",
+    JSON.stringify(actual) === JSON.stringify(expected)
+);
+
+console.log(
+    "Invalid numerical-string mark returns null:",
+    analyseMarks([78, "45"], passMark) === null
+);
+
+console.log(
+    "Invalid fractional passMark returns null:",
+    analyseMarks(marks, 50.5) === null
+);
