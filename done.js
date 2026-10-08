@@ -7,8 +7,8 @@ function analyseMarks(marks, passMark = 50) {
     let highest = marks[0];
     let lowest = marks[0];
     let passedCount = 0;
-    let failedCount = 0;
-    let evenCount = 0;
+    let failed = 0;
+    let even = 0;
 
     for (let i = 0; i < marks.length; i++) {
         const mark = marks[i];
